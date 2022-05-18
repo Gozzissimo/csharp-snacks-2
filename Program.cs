@@ -112,6 +112,8 @@ foreach (int n in lcalcolo)
 //--------------------
 
 //Funzione SELECT (è LA MAP DI CSHARP) che semplifica tantissimo TUTTI i lavori su liste, dizionari, vettori ecc.
+//Il metodo select ti permette di iterare su una lista e modificare gli elementi usando una funzione di callback, che verrà eseguita su ognungo degli elementi della lista.
+
 var listaDeiQuadrati = listnormal.Select(n => n * n);
 
 foreach (int n in listaDeiQuadrati)
@@ -182,6 +184,30 @@ List<Tuple<string, int>> lcoppie = new List<Tuple<string, int>>()
 
 Console.WriteLine();
 lcoppie.Sort();
+lcoppie.ForEach(x => Console.WriteLine(x));
 
+//foreach (var s in lcoppie)
+//    Console.WriteLine(s);
+
+//Ordinare per il secondo campo della tupla
+lcoppie.Sort((t1, t2) => t1.Item2.CompareTo(t2.Item2));
 foreach (var s in lcoppie)
     Console.WriteLine(s);
+
+List<Tuple<int, int, int>> lterne = new List<Tuple<int, int, int>>()
+{
+    new Tuple<int, int, int>(1, 2, 3),
+    new Tuple<int, int, int>(5, 5, 2),
+    new Tuple<int, int, int>(2, 4, 11),
+    new Tuple<int, int, int>(12, 15, 21),
+    new Tuple<int, int, int>(55, 45, 32),
+    new Tuple<int, int, int>(1, 2, 4),
+    new Tuple<int, int, int>(1, 3, 0),
+    new Tuple<int, int, int>(5, 5, 1)
+};
+lterne.Sort();
+Console.WriteLine(String.Join("\t", lterne));
+
+//Se vogliamo vedere la velocità di una parte del codice 
+double microseconds = DateTime.Now.Ticks / (TimeSpan.TicksPerMillisecond / 1000.0);
+Console.WriteLine("microseconds: {0}", microseconds);
